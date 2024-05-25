@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Protected Page</title>
+    <style>
+        #content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Password Protected Page</h1>
+    <div id="password-container">
+        <label for="password">Enter Password:</label>
+        <input type="password" id="password" name="password">
+        <button onclick="checkPassword()">Submit</button>
+    </div>
+    <div id="content">
+        <h2>Protected Content</h2>
+        <p>This is the protected content that only shows after entering the correct password.</p>
+    </div>
+
+    <script>
+        function checkPassword() {
+            var password = document.getElementById('password').value;
+            var correctPassword = 'your-predefined-password';
+            if (password === correctPassword) {
+                document.getElementById('password-container').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+            } else {
+                alert('Incorrect password. Please try again.');
+            }
+        }
+    </script>
+</body>
+</html>
