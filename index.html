@@ -61,6 +61,15 @@
         .search-button:hover {
             background-color: #357ae8;
         }
+        /* CSS for positioning the element */
+        #jsonData {
+            position: fixed;  /* Fixed position relative to the viewport */
+            bottom: 20px;     /* Distance from the bottom of the viewport */
+            right: 20px;      /* Distance from the right of the viewport */
+            background-color: #f0f0f0; /* Example background color */
+            padding: 10px;    /* Padding around the content */
+            border: 1px solid #ccc; /* Example border */
+        }
     </style>
 </head>
 <body>
@@ -80,6 +89,9 @@
         </div>
     </form> 
 
+    <h1>JSON Data</h1>
+    <pre id="jsonData"></pre>
+
     <script>
         document.getElementById('searchForm').addEventListener('submit', function(event) {
             event.preventDefault();  // Prevent the default form submission
@@ -93,6 +105,27 @@
                 window.location.href = url;
             }
         });
+
+        // Function to fetch and display the content of the JSON file
+        async function fetchJsonData() {
+            try {
+                const response = await fetch('info.json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const jsonData = await response.json();
+
+                // Construct the version information string
+                const versionInfo = `${jsonData.Version} ${jsonData.major}.${jsonData.minor}`;
+                document.getElementById('jsonData').textContent = versionInfo
+            } catch (error) {
+                console.error('There was a problem with the fetch operation:', error);
+            }
+        }
+
+        // Call the function to fetch and display the JSON file content
+        fetchJsonData();
+
     </script>
 </body>
 </html>
