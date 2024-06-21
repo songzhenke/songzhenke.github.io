@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Song's Home Page</title>
     <style>
-        #content {
+        #version-container {
             display: none;
         }
         body {
@@ -24,7 +24,7 @@
             align-items: center;
         }
         .logo {
-            font-size: 80px;
+            font-size: 55px;
             font-weight: bold;
             margin-bottom: 20px;
         }
@@ -40,7 +40,7 @@
         .logo span:nth-child(10) { color: #EA4335; } /* Red */
         .logo span:nth-child(11) { color: #4285F4; } /* Blue */
         .input-box {
-            width: 400px;
+            width: 350px;
             padding: 10px;
             border: 1px solid #dfe1e5;
             border-radius: 24px;
@@ -64,31 +64,36 @@
     </style>
 </head>
 <body>
-    <div class="search-box" id="password-container">
-        <div class="logo">
-            <span>S</span><span>o</span><span>n</span><span>g</span><span>'</span><span>s</span><span> </span><span>H</span><span>o</span><span>m</span><span>e</span>
+    <form id="searchForm"> 
+        <div class="search-box" id="search-container">
+            <div class="logo">
+                <span>S</span><span>o</span><span>n</span><span>g</span><span>'</span><span>s</span><span> </span><span>H</span><span>o</span><span>m</span><span>e</span>
+            </div>
+            <input type="text" class="input-box" id="search" placeholder="Search...">
+            <div class="button-box">
+                <button type="submit" class="search-button">Search</button>
+            </div>
         </div>
-        <input type="text" class="input-box" id="password" placeholder="Search...">
-        <div class="button-box">
-            <button onclick="checkPassword()" class="search-button">Search</button>
+        <div id="version-container" style="display: none;">
+            <h2>Version Content</h2>
+            <p>This is the version content that only shows after entering check version.</p>
         </div>
-    </div>
-    <div id="content">
-        <h2>Protected Content</h2>
-        <p>This is the protected content that only shows after entering the correct password.</p>
-    </div>
+    </form> 
 
     <script>
-        function checkPassword() {
-            var password = document.getElementById('password').value;
-            var correctPassword = 'your-predefined-password';
-            if (password === correctPassword) {
-                document.getElementById('password-container').style.display = 'none';
-                document.getElementById('content').style.display = 'block';
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent the default form submission
+            var query = document.getElementById('search').value;
+            var checkVersion = 'check version';
+            if (query === checkVersion) {
+                document.getElementById('search-container').style.display = 'none';
+                document.getElementById('version-container').style.display = 'block';
             } else {
-                alert('Incorrect password. Please try again.');
+                var url = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+                window.location.href = url;
             }
-        }
+        });
     </script>
 </body>
+</html>
 </html>
