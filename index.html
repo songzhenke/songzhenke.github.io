@@ -84,7 +84,7 @@
         document.getElementById('searchForm').addEventListener('submit', function(event) {
             event.preventDefault();  // Prevent the default form submission
             var query = document.getElementById('search').value;
-            var checkVersion = 'check version';
+            var checkVersion = 'Check version';
             if (query === checkVersion) {
                 document.getElementById('search-container').style.display = 'none';
                 document.getElementById('version-container').style.display = 'block';
