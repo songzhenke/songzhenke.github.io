@@ -1,5 +1,6 @@
 {
-    "Version": "Version",
+    "counter": "0",
+    "Version": "Rev",
     "major": "213",
     "minor": "201"
 }

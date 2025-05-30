@@ -115,7 +115,7 @@
                 const jsonData = await response.json();
 
                 // Construct the version information string
-                const versionInfo = `${jsonData.Version} ${jsonData.major}.${jsonData.minor}`;
+                const versionInfo = `Counter: ${jsonData.counter} - ${jsonData.Version} ${jsonData.major}.${jsonData.minor}`;
                 document.getElementById('jsonData').textContent = versionInfo
             } catch (error) {
                 console.error('There was a problem with the fetch operation:', error);
